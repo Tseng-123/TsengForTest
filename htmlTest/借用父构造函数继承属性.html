@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>call方法</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        //借用父构造函数的对象实例
+        // 1.父构造函数的对象实例
+        function Father(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        // 2.子构造函数的对象实例
+        function Son(name, age,score) {
+            //this指向子构造函数的对象实例
+            //首先调用父构造函数，然后把父构造函数的this改成了子构造函数中的this 
+            Father.call(this, name , age);
+            this.score = score;
+        }
+        var ldh = new Son('刘德华',18, 100);
+        console.log(ldh);
+        
+    </script>
+</body>
+
+</html>

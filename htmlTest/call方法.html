@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>call方法</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        function fn(x, y) {
+            console.log('我想喝手磨咖啡');
+            console.log(this); //windows
+            console.log(x + y);
+        }
+
+        // 1.call()可以调用函数
+        // console.log(fn() === fn.call());//true
+        var Andy = {
+            name: 'andy',
+        }
+
+        // 2.call()可以改变这个函数的this指向
+        fn.call(Andy); //此时这个函数的this指向了Andy这个对象
+
+        fn.call(Andy, 1, 2); //将函数的this指向Andy，同时向fn()传递参数1，2
+        
+    </script>
+
+</body>
+
+</html>

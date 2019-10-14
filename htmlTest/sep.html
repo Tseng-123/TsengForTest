@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script>
+
+        //原型案例
+        // function Person(name) {
+        //     this.name = name;
+        // }
+        // function Mother() { }
+        // Mother.prototype = {      //Mother的原型
+        //     age: 18,
+        //     home: ['Beijing']
+        // }
+
+        // Person.prototype = new Mother();   //Person的原型为Mother
+
+        //封装一个获取时间的方法
+        // function getNow() {
+        //     var str = '';
+        //     var date = new Date();
+        //     var year = date.getFullYear();
+        //     var month = date.getMonth() + 1;
+        //     var day = date.getDate();
+        //     var weekNum = date.getDay();
+        //     var hour = date.getHours();
+        //     hour = hour < 10 ? '0' + hour : hour;
+        //     var minutes = date.getMinutes();
+        //     minutes = minutes < 10 ? '0' + minutes : minutes;
+        //     var seconds = date.getSeconds();
+        //     seconds = seconds < 10 ? '0' + seconds : seconds;
+        //     var week = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        //     return '今天是:' + year + '年 ' + month + '月 ' + day + '日 ' + week[weekNum]
+        //             + hour + ':' + minutes + ':' + seconds;
+        // }
+        // var date = +new Date();
+        // console.log(Date.now());//时间戳valueOf(),getTime(),
+
+
+        //封装倒计时方法
+        // function countDown(time) {
+        //     var nowTime = +new Date(); //获取当前时间的时间戳
+        //     var inputTime = +new Date(time); // 将输入的时间转化为时间戳格式
+        //     var times = (inputTime - nowTime) / 1000; //计算剩余的秒数
+        //     var d = parseInt(times / 60 / 60 / 24);
+        //     var h = parseInt(times / 60 / 60 % 24);
+        //     var m = parseInt(times / 60 % 60);
+        //     var s = parseInt(times % 60);
+        //     return d + '天' + h + '时' + m + '分' + s + '秒';
+        // }
+        // console.log(countDown('2019-9-20 14:35:00'));
+        // var arr = [];
+        // console.log(arr instanceof Array);
+        // console.log(Array.isArray(arr));
+
+        // var arr = [1, 2, 3, 'pink', 'red'];
+        // arr.pop();//删除数组的最后一个元素,返回删除的元素
+        // arr.push('tseng');//在数组后面新增一个元素,返回数组长度
+        // arr.shift();//删除数组的第一个元素,返回删除的元素
+        // arr.unshift('yi');//在数组前面添加一个元素,返回数组长度
+
+        // function getPrice() {
+        //     var gz = [1500, 1200, 2000, 2100, 1800];
+        //     var newArr = new Array();
+        //     for (var i = 0; i < gz.length; i++) {
+        //         if (gz[i] <= 2000) {
+        //             // newArr[newArr.length] = gz[i];
+        //             newArr.push(gz[i]);
+        //         }
+        //     }
+        //     console.log(newArr);
+        // }
+        // getPrice();
+
+        // var arr = [1,3,5,4,44,66,22,54,64];
+        // var arr1 = arr.sort( function(a,b){
+        //     return a-b;
+        // });
+
+        // var arr = ['c', 'a', 'b', 'a', 'a', 'z', 'a'];
+        // var newArr = [];
+        // for (var i = 0; i < arr.length; i++) {
+        //     if(newArr.indexOf(arr[i]) == -1){
+        //         // newArr[newArr.length] = arr[i];
+        //         newArr.push(arr[i]);
+        //     }
+        // }
+        // console.log(newArr);
+
+        // var str = 'abcoefoxyozzopp';
+        // var index = str.indexOf('o');
+        // while (index !== -1) {
+        //     console.log(index);
+        //     index = str.indexOf('o', index + 1) ;
+
+        // }
+
+        // var arr = ['red', 'blue', 'red', 'green', 'pink', 'red'];
+        // var index = arr.indexOf('red');
+        // var count = 0;
+        // while (index !== -1) {
+        //     console.log(index + 1);
+        //     count++;
+        //     index = arr.indexOf('red', index + 1);
+
+        // }
+        // console.log(count);
+
+        // var str = 'abcoefoxyozzopp';
+        // // for(var i= 0;i<str.length;i++){
+        // //     str = str.replace('o', '*');
+        // // }
+
+        // while(str.indexOf('o') !== -1){
+        //     str = str.replace('o','*')
+        // }
+
+        // console.log(str);
+
+        // class Father {
+        //     constructor(lastName, hair) {
+        //         this.lastName = lastName;
+        //         this.hair = hair;
+        //     }
+        //     money() {
+        //             console.log(100);
+
+        //         }
+
+        // }
+        // class Son extends Father {
+
+        // }
+
+        // var son = new Son('曾', '黑头发');
+        // son.money();
+        // console.log(son);
+
+
+        // class Father {
+        //     constructor(x, y) {
+        //         this.x = x;
+        //         this.y = y;
+        //     }
+        //     sum() {
+        //         console.log(this.x + this.y);
+
+        //     }
+        // }
+        // class Son extends Father {
+        //     constructor(x,y,z) {
+        //         super(x,y);
+        //         this.z = z;
+        //     }
+        // }
+
+        // var son = new Son(2,2,3);
+        // son.sum();
+
+        //constructor里面的this指向实例对象，方法里面的this指向这个方法的调用者
+        class Father {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            sum() {
+                console.log(this.x + this.y);
+
+            }
+        }
+
+        class Son extends Father {
+            constructor(x, y, firstName) {
+                super(x, y);
+                this.xing = firstName;
+            }
+            subtract() {
+                console.log(this.x - this.y);
+
+            }
+        }
+        var son = new Son(7, 4,'曾');
+        console.log(son);
+        
+        son.subtract();
+
+        var a = 1;
+        var b =2;
+        var c =3;
+        b=a;
+        console.log(a,b);
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
