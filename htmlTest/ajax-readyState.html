@@ -34,13 +34,13 @@
                     // 打印出：2
                     // 已经接收到了响应报文的响应头
 
-                    console.log(this.getAllResponseHeaders().split('\n')); 
+                    console.log(this.getAllResponseHeaders().split('\n'));
                     // console.log(this.getResponseHeader('expires'));
                     // 以字符串的格式成功打印出响应头
-                    
+
                     console.log(xhr.responseText);
                     // 无打印结果，未拿到响应体
-                    
+
 
                     break;
                 case 3:
@@ -49,7 +49,7 @@
                     // 正在下载响应报文的响应体,有可能响应体为空，也有可能不完整
                     // 在此处处理响应体不可靠
                     console.log(xhr.responseText);
-                    
+
 
                     break;
                 case 4:
@@ -70,6 +70,14 @@
                 alert(JSON.parse(this.responseText));
             }
         }
+
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('GET','');
+        // xhr.send();
+        // xhr.onreadystatechange = function () {
+
+        // }
+
     </script>
 </body>
 

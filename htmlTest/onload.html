@@ -19,7 +19,7 @@
         // 一旦请求体是urlencode格式的内容，一定要设置请求头中Content-Type 'application/x-www-form-urlencode'
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
         // 以 urlencode 格式设置请求体
-        xhr.send('ker1=value1&key2=value2'); 
+        xhr.send('key1=value1&key2=value2'); 
 
         xhr.onreadystatechange = function () {
             if(this.readyState === 4){

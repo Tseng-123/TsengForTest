@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta src="https://cdn.jsdelivr.net/npm/vue">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-html</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
 </head>
+
 <body>
-    <div id="app">
-        <hi>{{message}}</hi>
-        <h1>vue</h1>
+    <div id='app'>
+        <!-- 使用v-cloak可以解决插值表达式闪烁的问题 -->
+        <p v-cloak> +++{{msg}}---</p>
+
+        <h4 v-text="msg2">1111</h4>
+        <!-- 默认v-text没有闪烁的问题 -->
+        <!-- v-text会覆盖元素中原本的内容，但是插值表达式指挥替换自己的这个占位符，不会吧整个元素的内容清空 -->
+        <!-- 1111不会显示 -->
+
+        <div v-html="msg3">啊啊</div>
+        <!-- 使用v-html将变量渲染成标签 -->
+        <!-- 啊啊不会被渲染 -->
+
+        <input type="button" id="btn" value="按钮" v-bind:title="mytitle + '123'">
+        <!-- v-bind把title当作变量来解析，v-bind中可以写合法的js表达式-->
+        <br>
+        <!-- vue提供了v-on: 事件绑定机制 -->
+        <input type="button" id="btn" value="按钮" v-on:mouseover="show">
+
     </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'vue-html',
+                msg2: 'hhh',
+                msg3: '<h1>这是一个h1标签</h1>',
+                mytitle: '一个自定义title'
+            },
+            methods: {
+                show: function () {
+                    alert('hello!');
+                }
+            }
+        })
+    </script>
 </body>
-<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
-<script>
-    var app = new vue({
-        el : '#app',
-        data : {
-            message : 'hello vue'
-        }
-    })
-</script>
+<style>
+    [v-cloak] {
+        display: none;
+        /* color: red; */
+    }
+</style>
+
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js_设计模式</title>
+</head>
+<body>
+    <script>
+
+        // function checkName() {
+        //     console.log('1');
+            
+        // } //声明一个函数
+        // function checkName() {
+        //     console.log('2');
+            
+        // }
+        // 以上写法会产生方法覆盖问题，打印出结果为2
+
+
+        var checkName = function () {
+            console.log('1');
+            
+        }  //声明一个变量，将函数存放在变量中,减少覆盖或被覆盖的风险
+
+
+        // 用对象收编变量
+        var checkObject = {
+            checkName: function () {
+                console.log('zengyi');
+                
+            },
+            checkEmail: function(){
+
+            },
+            checkPassword: function() {
+                
+            }
+         }      //创建一个对象，将方法放在里面，通过点方法向下遍历得到
+
+         checkObject.checkName(); //打印出zengyi
+
+
+         // 类
+         var CheckObject = function () {
+             this.checkName = function () {
+                 
+             },
+             this.checkEmail = function () {
+                 
+             },
+             this.checkPassword = function () {
+                 
+             }
+         }
+         var a = new CheckObject();  //对类实例化，创建一个a对象
+         a.checkEmail();
+
+
+         // 类的原型对象
+
+         var CheckObject = function () {};
+            
+        //类的原型对象本质是个对象，所以得按对象格式写
+         CheckObject.prototype =  {
+             checkName : function () {
+                //方法体                 
+                 return this; //将当前对象返回
+             },
+             checkEmail: function () {
+                //方法体
+                return this;
+             },
+             checkPassword : function () {
+                //方法体
+                return this;
+             }
+         }
+
+         var a = new CheckObject();
+         a.checkName().checkEmail().checkPassword(); //因为return this;将当前对象返回了，所以可以这样写一次调用三个方法
+
+        
+    </script>
+    
+</body>
+</html>

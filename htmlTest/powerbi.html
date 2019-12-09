@@ -1,0 +1,43 @@
+<html>
+<head>
+  <title>PBIE Test</title>
+  <meta charset="utf-8"> 
+  <script src="scripts/powerbi.js"></script>
+</head>
+<body>
+  <div id="captionArea">
+    <h1>Power BI Embed 测试</h1>
+  </div>
+  <button onclick="show_default()">展示默认报表</button>
+  <div id="embedContainer" style="height:90%">
+  </div>
+  <script>
+    // 用于访问PBIE的三个参数，仅供测试，正式环境下不能明文写在这里！！！
+    var txtAccessToken = 'H4sIAA***AAA==';
+    var txtEmbedUrl =
+    'https://app.powerbi.com/groups/0f03c3de-f788-4b15-8825-f6eada6d219b/reports/efc68ed0-898f-4901-afb1-dfa7ee3b73a4/ReportSectionf8be73675cc7ed079eb2';
+    var txtEmbedReportId = 'efc68ed0-898f-4901-afb1-dfa7ee3b73a4/ReportSectionf8be73675cc7ed079eb2';
+      
+    // 默认方式，不做特殊处理直接显示报表  
+    function show_default () {
+      var models = window['powerbi-client'].models;
+      var permissions = models.Permissions.All;
+      var config = {
+        type: 'report',
+        tokenType: models.TokenType.Embed,
+        accessToken: txtAccessToken,
+        embedUrl: txtEmbedUrl,
+        id: txtEmbedReportId,
+        permissions: permissions,
+        settings: {
+          filterPaneEnabled: true,
+          navContentPaneEnabled: true
+        }
+      };
+ 
+      var embedContainer = document.getElementById('embedContainer');
+      var report = powerbi.embed(embedContainer, config);
+    }
+  </script>
+</body>
+</html>
