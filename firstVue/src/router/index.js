@@ -19,6 +19,7 @@ import menuOrder from '@/components/system/menuOrder'
 import roleManage from '@/components/system/roleManage'
 import checkCount from '@/components/check/checkCount'
 import checkInquiry from '@/components/check/checkInquiry'
+import Excel from '@/zujianTest/Excel'
 
 Vue.use(Router)
 
@@ -34,7 +35,7 @@ export default new Router({
     {
       path: '/',
       name: '主页面',
-      component: home,
+      component: Excel,
       hidden: true,
       meta: {
         requireAuth: true
