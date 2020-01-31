@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>原型对象的应用 扩展内置对象的方法</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        console.log(Array.prototype); //查看数组的方法
+        Array.prototype.sum = function () {
+            var sum = 0;
+            for (let index = 0; index < this.length; index++) {
+                sum += this[index];
+            }
+            return sum;
+        }
+        //注意: 数组和字符串内置对象不能给原型对象覆盖操作Array.prototypr = {},这会覆盖原有内置对象的方法
+        //只能通过Array.prototypr.sum = fuction() {}的方式
+
+        Array.prototype = {
+            sum: function () {
+                for (let index = 0; index < this.length; index++) {
+                    var sum;
+                    sum += this[index];
+                }
+                return sum;
+            }
+        }
+
+        var arr = [1, 2, 3];
+        console.log(arr.sum());
+
+    </script>
+
+</body>
+
+</html>

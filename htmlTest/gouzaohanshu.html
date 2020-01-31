@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>原型对象&对象原型</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <script>
+
+        //constructor构造函数
+        function Star(name, age) {
+            //公共属性定义在构造函数里面
+            this.name = name;
+            this.age = age;
+        }
+        //公共方法定义到原型对象里面
+        // Star.prototype.sing = function () {
+        //     console.log('我会唱歌');
+
+        // };
+        // Star.prototype.movie = function () {
+        //     console.log('我会演电影');
+
+        // };
+
+        //以对象的形式给原型对象赋值，必须手动利用constructor指回原来的函数
+        Star.prototype = {
+            //手动利用constructor指回原来的函数
+            constructor: Star,
+            sing: function () { },
+            movie: function () { }
+        }
+
+        var ldh = new Star('刘德华', 33);
+        var zxy = new Star('张学友', 35);
+        //__proto__是对象原型，内部指向原型对象prototype
+        console.log(ldh.__proto__);
+        //对象原型（__proto__）和构造函数（prototype）原型对象里面都有一个属性constructor
+        //把constructor称为构造函数,因为它指回构造函数本身
+        //constructor主要用于记录该对象引用于哪个构造函数，它可以让原型对象重新指向原来的构造函数
+        console.log(Star.prototype.constructor);
+        console.log(ldh.__proto__.constructor);
+
+        //构造函数、实例、原型对象三者之间的关系
+        // Star构造函数 ——> Star.prototype——>Star原型对象prototype
+        // Star原型对象prototype ——>Star.prototype.constructor ——>Star构造函数
+        // Star构造函数 ——> ldh对象实例 ——> ldh.__proto__ ——> Star原型对象prototype
+        // ldh.__proto__.constructor指回Star构造函数↓
+        // 实际上是通过Star原型对象prototype ——>Star.prototype.constructor ——>Star构造函数
+
+        console.log(Star.prototype.__proto__);
+        
+
+    </script>
+</body>
+
+</html>

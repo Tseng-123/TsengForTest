@@ -1,0 +1,167 @@
+<!DOCTYPE html>  
+<html>  
+ <head>  
+  <title>轮播图</title>  
+  <meta charset="utf-8" />  
+  <style type="text/css">  
+        #frame { 
+            position: absolute; 
+            width: 300px;  
+            height: 200px;  
+            overflow: hidden; 
+            border-radius:5px;  
+        }  
+        #dis {
+            position: absolute;  
+            left: -50px;  
+            top: -10px;  
+            opacity: 0.5;  
+        }  
+        #dis li {  
+            display: inline-block;  
+            width: 200px;  
+            height: 20px;  
+            margin: 0 50px;  
+            text-align: center;  
+            color: #fff;  
+            border-radius: 10px;  
+            background: #000;  
+        }  
+        #photos img {  
+            float: left;  
+            width:300px;  
+            height:200px;  
+        }  
+        #photos { 
+            position: absolute;
+            z-index:9px;  
+            width: calc(300px * 5);
+        }  
+        .play{  
+            animation: ma 20s ease-out infinite alternate; 
+        }  
+        @keyframes 
+        ma {
+            0%,20% {        
+                margin-left: 0px;      
+                 }  
+            25%,40% {      
+                 margin-left: -300px;
+                     }  
+            45%,60% {       
+                margin-left: -600px; 
+                   }  
+            65%,80% {       
+                margin-left: -900px;
+                    }  
+            85%,100% {      
+                margin-left: -1200px;
+                   }  
+        }  
+        .num{  
+            width:25px;
+            height:25px;
+            position:absolute;
+            z-index:10;  
+            display:inline-block;  
+            right:10px;
+            top:165px;  
+            border-radius:100%;  
+            background:coral;  
+            line-height:25px;  
+            cursor:pointer;  
+            color:#fff;  
+            text-align:center;  
+            opacity:0.8;  
+        }  
+        .num:hover{
+            background:rgb(209, 209, 219);
+            }  
+        .num:hover,#photos:hover{
+            animation-play-state:paused;
+            }  
+        .num:nth-child(2){
+            margin-right:30px
+            }  
+        .num:nth-child(3){
+            margin-right:60px
+            }  
+        .num:nth-child(4){
+            margin-right:90px
+        }  
+        .num:nth-child(5){
+            margin-right:120px
+        }  
+        #a1:hover ~ #photos{
+            animation: ma1 .5s ease-out forwards;
+            }  
+        #a2:hover ~ #photos{
+            animation: ma2 .5s ease-out forwards;
+            }  
+        #a3:hover ~ #photos{
+            animation: ma3 .5s ease-out forwards;
+        }  
+        #a4:hover ~ #photos{
+            animation: ma4 .5s ease-out forwards;
+            }  
+        #a5:hover ~ #photos {
+            animation: ma5 .5s ease-out forwards;
+            }  
+        @keyframes ma1 
+        {
+            0%{
+                margin-left:-1200px;
+                }100%{
+                      margin-left:-0px;
+                    } 
+                        }  
+        @keyframes ma2 {
+            0%{
+                margin-left:-1200px;
+                }100%{
+                    margin-left:-300px;
+                    } 
+                      }  
+        @keyframes ma3 {
+            100%{
+                margin-left:-600px;
+                }  
+                 }  
+        @keyframes ma4 {
+            100%{
+                margin-left:-900px;
+                }  
+                 }  
+        @keyframes ma5 {
+            100%{
+                margin-left:-1200px;
+            } 
+             }  
+  </style>  
+ </head> 
+
+ <body>  
+ <div id="frame" >  
+        <!-- <a id="a1" class="num">1</a>  
+        <a id="a2" class="num">2</a>  
+        <a id="a3" class="num">3</a>  
+        <a id="a4" class="num">4</a>  
+        <a id="a5" class="num">5</a>   -->
+        <div id="photos" class="play">  
+              <img src="images/1.jpg" >
+              <img src="images/2.jpg" >    
+              <img src="images/3.jpg" >  
+              <img src="images/4.jpg" >  
+              <img src="images/5.jpg" >  
+              
+              <!-- <ul id="dis">  
+                <li>图片一</li>  
+                <li>图片二</li>  
+                <li>图片三</li>  
+                <li>图片四</li>  
+                <li>图片五</li>  
+              </ul>   -->
+        </div>  
+</div>  
+</body>  
+</html>  

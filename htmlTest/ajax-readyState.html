@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AJAX readyState1-4详解</title>
+    <meta name="" content="UTF-8">
+</head>
+
+<body>
+    <script>
+
+        var xhr = new XMLHttpRequest();
+        console.log(xhr.readyState);
+        // 打印出：0
+        // 初始化请求代理对象
+
+
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+        console.log(xhr.readyState);
+        // 打印出：1
+        // open方法已经被调用，建立一个与服务端特定端口的连接
+
+
+        xhr.send();
+        console.log(xhr.readyState);
+        // 打印出：1
+
+
+        xhr.addEventListener('readystatechange', function () {
+            // console.log(this.readyState);
+            switch (this.readyState) {
+                case 2:
+                    console.log(xhr.readyState);
+                    // 打印出：2
+                    // 已经接收到了响应报文的响应头
+
+                    console.log(this.getAllResponseHeaders().split('\n'));
+                    // console.log(this.getResponseHeader('expires'));
+                    // 以字符串的格式成功打印出响应头
+
+                    console.log(xhr.responseText);
+                    // 无打印结果，未拿到响应体
+
+
+                    break;
+                case 3:
+                    console.log(xhr.readyState);
+                    // 打印出：3
+                    // 正在下载响应报文的响应体,有可能响应体为空，也有可能不完整
+                    // 在此处处理响应体不可靠
+                    console.log(xhr.responseText);
+
+
+                    break;
+                case 4:
+                    console.log(xhr.readyState);
+                    // 打印出：4
+                    // 整个响应体已经下载完
+
+                    break;
+
+                default:
+                    break;
+            }
+
+        })
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                alert(JSON.parse(this.responseText));
+            }
+        }
+
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('GET','');
+        // xhr.send();
+        // xhr.onreadystatechange = function () {
+
+        // }
+
+    </script>
+</body>
+
+</html>

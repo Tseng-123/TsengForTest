@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ajax</title>
+    <meta content="UTF-8">
+</head>
+
+<body>
+    <script>
+        //涉及到AJAX操作的页面不能使用文件协议访问
+
+
+        //AJAX 是一套API核心提供的类型：XMLHttpRequest
+
+        // 1.设置用户代理xhr
+        var xhr = new XMLHttpRequest();
+
+        //如果需要捕获第一个状态的变化，需要注意代码执行顺序的问题（以防出现来不及的情况）
+        // xhr.onreadystatechange = function () {
+        //     console.log(this.readyState); //打印出的是：1，2，3，4
+        // }
+
+        // 2.设置请求地址（使用相对或者绝对路径）
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+
+        // 3.发送请求
+        xhr.send();
+
+        // 4.接收响应
+
+        //因为响应需要时间，所以无法通过返回值的方式返回响应
+        // var response = xhr.send();
+        // console.log(response);
+
+        // 因为客户端永远不知道服务端何时才能返回我们需要的响应
+        // 所以AJAX API采用时间的机制（类似于通知）
+        // xhr.onreadystatechange = function () {
+        //     //这个事件并不是只在响应时出发，XHR状态改变就触发
+        //     // console.log(this.readyState); //打印出的是：2，3，4
+        //     if (this.readyState !== 4) {
+        //         return;
+        //     }
+        //     //获取响应体（响应的内容）
+        //     console.log(this.responseText);
+        // }
+
+        //注册监听事件
+        xhr.addEventListener('readystatechange', function () {
+            if (this.readyState !== 4) {
+                return;
+            }
+            console.log(this.readyState);
+            
+            console.log(this.responseText);
+            
+        })
+
+        // var user = JSON.parse(xhr.responseText);
+        // console.log(user);
+
+        // 5.获取结果
+
+    </script>
+</body>
+
+</html>

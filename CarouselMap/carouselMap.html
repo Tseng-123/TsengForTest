@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CarouselMap</title>  
+</head>
+<style>
+     #test { 
+            position: absolute; 
+            width: 300px;  
+            height: 200px;  
+            overflow: hidden; 
+            border-radius:5px;  
+        }  
+    #changeimg > div{
+        color: #007fff;
+        transition: all 0.5s;
+    }
+    #changeimg > div span{
+        position: relative;
+        left: 20px;
+        transition: all 0.5s;
+    }
+    #changeimg > div.active{
+        background: #007fff;
+        color: #fff;
+    }
+    #changeimg > div.active span{
+        left: 0;
+    }
+    .play{  
+            animation: ma 20s ease-out infinite alternate; 
+        } 
+</style>
+
+
+
+<body>
+    <div id="test">
+        <div class="play">
+        <img src="images/1.jpg">
+        <img src="images/2.jpg">
+        <img src="images/3.jpg">
+        <img src="images/4.jpg">
+        <img src="images/5.jpg">
+        </div>
+    </div>
+</body>
+<script>
+    let index=0
+    setInterval(function(){
+        index++
+        // if(index>length){
+        //     index=0
+        //     }
+        //     取所有的dom
+        // }
+    }, 3000)
+</script>
+</html>

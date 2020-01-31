@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类和对象</title>
+</head>
+
+<body>
+    <script>
+        // 1. 在ES6 中类没有变量提升，所以必须先定义类，才能通过类实例化对象
+        // 2. 类里面的共有属性和方法一定要加this使用 
+        // 3. 
+        // 创建类 class
+        class Star {            //类
+            constructor(name,age) {  //构造函数
+                this.name = name;
+            }
+
+            //类里面的方法不需要写function
+            //多个函数方法之间不用逗号分隔
+            sing(song){
+                console.log('唱歌'+song);
+                
+            }
+        }
+
+        //通过new关键字创建对象实例
+        var ldh = new Star('刘德华',18); //对象实例
+        ldh.sing('冰雨');
+        console.log(ldh.name);
+
+        // 1. 通过class关键字创建类，类名习惯性定义首字母大写
+        // 2. 类里面有个constructor函数，可以接收传递过来的参数，同时返回实例对象
+        // 3. constructor函数 只要 new生成实例时，就会自动调用这个函数，如果不屑这个函数，类也会自动生成这个函数
+        // 4. 生成实例的关键字new不能省略
+        // 5. 注意语法规范，创建类时雷曼后面不加小括号，生成实例时类名后面加小括号，构造函数constructor不需要加function
+
+
+        // 类的继承
+        class Father {
+            constructor(x,y) {
+                this.x = x;
+                this.y = y;
+            }
+            money(){
+                console.log(100);
+            }
+            sum(x,y){
+                console.log(this.x + this.y);
+            }
+            say(){
+                return '我是爸爸';
+                
+            }
+        }
+
+        //使用extends关键字继承父类
+        class Son extends Father {
+            constructor(x,y){
+                //super关键字调用父类的构造函数
+                //super必须在子类this之前调用
+                super(x,y);
+                this.x = x;
+                this.y = y;
+
+            }
+
+            //子类扩展自己的方法
+            subtract(){
+                console.log(this.x - this.y);
+                
+            }
+            say(){
+                // console.log('我是儿子');
+                console.log(super.say()+'的儿子'); //调用父类的普通函数
+                
+            }
+        }
+
+        var son = new Son();
+        son.money();
+        son.sum(1,2);
+        
+        son.say();
+        // 1. 继承中，如果实例化子类输出一个方法，先看子类有没有这个方法，如果有就先执行子类
+        // 2. 继承中，如果子类里面没有，就去查找父类有没有这个方法，如果有，就执行父类的这个方法（就近原则）
+    </script>
+</body>
+
+</html>

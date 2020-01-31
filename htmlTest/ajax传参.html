@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX发送GET请求并传递参数</title>
+</head>
+<body>
+    <script>
+        
+        var xhr =  new XMLHttpRequest();
+        // xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+        xhr.open('GET','/users.php')
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                alert(this.responseText)
+            }
+        }
+    </script>
+</body>
+</html>

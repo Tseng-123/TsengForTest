@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组方法</title>
+</head>
+
+<body>
+    <script>
+
+        //forEach循环遍历
+        var arr = [12, 23, 65, 45, 32, 54, 65, 25, 54];
+        var sum = 0;
+        arr.forEach(function (value, index, array) {
+            // console.log(value);
+            // console.log(index);
+            // console.log(array);
+            sum += value;
+        })
+
+        console.log(sum);
+
+        //filter 筛选数组
+        //返回的是一个数组，把所以满足条件的元素返回成一个新的数组
+        var newArr = arr.filter(function (value, index, ) {
+            // return value >= 30;
+            return value % 2 === 0;
+
+        })
+        console.log(newArr);
+
+        //some 查找数组中是否有满足条件的元素
+        //返回的是一个布尔值，查找到满足条件的元素就终止循环
+        var flag = arr.some(function(value,index){
+            // return value >= 20;
+            return value === 123;
+        })
+        console.log(flag);
+        
+        //every和some类似
+        var flag2 = arr.every(function (value) {
+            return value === 123;
+        })
+        console.log("flag2:"+flag2);
+        console.log(typeof(flag2)); //boolean
+        
+
+        //map   返回一个对象
+        var flag3 = arr.map(function (value) {
+            return value === 12;
+        })
+        console.log("flag3:"+flag3);
+        console.log(typeof(flag3)); //object
+        
+        
+        
+    </script>
+</body>
+
+</html>1
